@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /** 
  * Class of Engine
 */
@@ -11,45 +9,71 @@ public class Engine {
     * @return messages about the fuel 
     */
 
-    public static Engine engine;
     // Attributes:
+    public static Engine engine;
     private FuelType f;
     private double currentFuelLevel;
     private double maxFuelLevel;
 
 
-// • Constructor
+    // Constructors:
     //takes in initial values for the attributes named above and sets them appropriately
-    public Engine(FuelType f, double maxFuelLevel, double currentFuelLevel){
+    public Engine(FuelType f, double maxFuelLevel){
         this.f = f;
-        this.currentFuelLevel = currentFuelLevel;
+        this.currentFuelLevel = 0;
         this.maxFuelLevel = maxFuelLevel;
     }
 
-// • Methods:
+    // Accessors:
+
+    /** 
+    * Returns information about the current fuel level of the specific engine
+    * @return current fuel level
+    */
+
+    public double getCurrent(){
+        return this.currentFuelLevel;
+    }
+
+    /** 
+    * Returns information about the max fuel level of the specific engine
+    * @return max fuel level
+    */
+
+    public double getMax(){
+        return this.maxFuelLevel;
+    }
+
+
+    /** 
+    * Refuels the tank by setting it to the max fuel
+    */
+
+    // Methods:
     public void refuel() {
         currentFuelLevel = maxFuelLevel;
     }
 
-    Scanner input = new Scanner(System.in);
+
+    /** 
+    * Runs the engine as long as the tank has enough fuel. 
+    * Throws an exception if the tank does not have enough fuel.
+    */
 
     public void go() {
         // decrease the current fuel level and print some useful information 
-        System.out.println("How far do you want to go:");
-        double distance = input.nextDouble();
+        
+        this.currentFuelLevel = this.currentFuelLevel - 10;
 
-        this.currentFuelLevel = this.currentFuelLevel - distance;
-
-        if (this.currentFuelLevel >= 0 && distance <= this.maxFuelLevel){
+        if (this.currentFuelLevel > 0 && this.currentFuelLevel <= this.maxFuelLevel){
             // print info
             System.out.println("Remaining fuel is " + this.currentFuelLevel);
         }
 
         else {
             //throw exception
-            this.currentFuelLevel = this.currentFuelLevel + distance;
+            this.currentFuelLevel = this.currentFuelLevel + 10;
             throw new RuntimeException("There is not enough fuel.");
-            
         }
 
     }
@@ -57,10 +81,10 @@ public class Engine {
 
 //main
 public static void main(String[] args) {
-    Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0, 0.0);
+    Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
+    myEngine.refuel();
     try {
         while (true) {
-            myEngine.refuel();
             myEngine.go();
         }
     } catch (Exception e) {

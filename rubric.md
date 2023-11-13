@@ -32,17 +32,17 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 **YES** 1 pt: The `Passenger` class uses appropriate methods from the `Car` class to implement its `boardCar(...)` and `getOffCar(...)` methods
 
-**PART** 1 pt: The `Train` class has all expected attributes / relationships with the other classes
+**YES** 1 pt: The `Train` class has all expected attributes / relationships with the other classes
 
-**PART** 1 pt: The `Train` class has all expected methods, making use of methods from other classes as appropriate
+**YES** 1 pt: The `Train` class has all expected methods, making use of methods from other classes as appropriate
 
 
 
 ## General Items:
 
-**PART** 4 pts: Programs compile without errors or warnings
+**YES** 4 pts: Programs compile without errors or warnings
 
-**PART** 2 pts: Executes fully & consistently without crashing (exception/freeze)
+**YES** 2 pts: Executes fully & consistently without crashing (exception/freeze)
 
 **YES** 2 pt: Complies with style guidelines (missing items 1 pt each):
 

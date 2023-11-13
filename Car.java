@@ -1,21 +1,18 @@
 import java.util.ArrayList;
 
 /** 
- * Class of Car
+* Class of Car
 */
 public class Car {
 
     /** 
-    * Takes in input from the user (maxCapacity) and gives information about the cars
-    * @param inputs (number of maxCapacity) from user
-    * @return max capacity and number of seats left 
+    * Attributes: An ArrayList of passengers and a number of max capacity
     */
-
-// Attributes:
     private ArrayList<Passenger> passengersOnboard;
     private int maxCapacity;
 
-// • Constructor
+    
+    // Constructor
     public Car(int maxCapacity){
         // takes in an initial value for the `Car`'s maximum capacity
         this.maxCapacity = maxCapacity;
@@ -24,13 +21,21 @@ public class Car {
     }
 
 
-// • Accessor-like methods:
-    // return the maximum capacity and remaining seats, respectively
-    public int getCapacity(){
-        System.out.println(this.maxCapacity);
-        return this.maxCapacity;
+    /** 
+    * Returns the maximum capacity
+    * @return max capacity 
+    */
 
+    // Accessor-like methods:
+    public int getCapacity(){
+        //System.out.println(this.maxCapacity);
+        return this.maxCapacity;
     }
+
+    /** 
+    * Returns the number of seats left
+    * @return number of seats left 
+    */
 
     public int seatsRemaining(){
         int arraySize = this.passengersOnboard.size();
@@ -39,7 +44,13 @@ public class Car {
         return seatsLeft;
     }
 
-// • Methods:
+
+    /** 
+    * Inputs the passenger to the Arraylist, if they are not on the list
+    * @param p Passenger input by the user  
+    */
+
+    // Methods:
     public void addPassenger(Passenger p) {
         
         if (this.passengersOnboard.contains(p)){
@@ -51,12 +62,12 @@ public class Car {
             this.passengersOnboard.add(p);
             System.out.println("Adding " + p.name + "...");
         }
-
-        else {
-            //If you encounter a problem, throw a `RuntimeException`
-            throw new RuntimeException("That is not possible.");
-        }
     }
+
+    /** 
+    * Take in the passenger and removes the name from the Arraylist, if they are on the list
+    * @param p  Passenger input by the user
+    */
 
     public void removePassenger(Passenger p) {
         //confirming that the `Passenger` is actually onboard before trying to remove
@@ -72,6 +83,11 @@ public class Car {
         }
     }
 
+    /** 
+    * Take in the passenger and removes the name from the Arraylist
+    * @param p  Passenger input by the user
+    */
+    
     public void printManifest() {
         int arraySize = this.passengersOnboard.size();
         if (arraySize == 0){
@@ -93,11 +109,9 @@ public class Car {
             else {
                 for (Passenger str : this.passengersOnboard) { 
                     fullList = (str.name);
-                } 
+                }
                 System.out.println("The person on board is: " + fullList + ".");
             }
-
-            
         }
     }
 
@@ -112,7 +126,6 @@ public static void main(String[] args) {
             myCar.addPassenger(p);
             myCar.addPassenger(s);
             myCar.printManifest();
-            myCar.removePassenger(p);
             myCar.removePassenger(p);
             myCar.printManifest();
             
